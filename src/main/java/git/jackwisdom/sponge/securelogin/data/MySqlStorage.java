@@ -35,4 +35,14 @@ public class MySqlStorage implements StorageHandler {
     public boolean hasRecord(String name) {
         return false;
     }
+
+    @Override
+    public String getIp(String name) {
+        return null;
+    }
+
+    @Override
+    public int getAccounts(String ip) {
+        return 0;
+    }
 }

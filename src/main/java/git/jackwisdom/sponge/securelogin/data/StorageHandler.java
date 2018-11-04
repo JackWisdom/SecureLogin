@@ -17,4 +17,9 @@ public interface StorageHandler {
     void delete(String name);
 
     boolean hasRecord(String name);
+
+    //WIP
+    String getIp(String name);
+
+    int getAccounts(String ip);
 }
