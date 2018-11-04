@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.spongepowered.api.entity.living.player.Player;
 import org.spongepowered.api.event.Listener;
 import org.spongepowered.api.event.filter.cause.First;
-import org.spongepowered.api.event.game.state.GameStartedServerEvent;
 import org.spongepowered.api.event.network.ClientConnectionEvent;
 
 public class IListener {
@@ -23,8 +22,5 @@ public class IListener {
     public void onPlayerQuit(ClientConnectionEvent.Disconnect event, @First Player player) {
     }
 
-    @Listener
-    public void onTst(GameStartedServerEvent event) {
-        api.tst();
-    }
+
 }
