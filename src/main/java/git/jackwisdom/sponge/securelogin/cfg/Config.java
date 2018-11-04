@@ -1,11 +1,10 @@
 package git.jackwisdom.sponge.securelogin.cfg;
 
 import com.google.inject.Inject;
-import git.jackwisdom.sponge.securelogin.annotation.CfgVaule;
 import ninja.leaping.configurate.commented.CommentedConfigurationNode;
+import ninja.leaping.configurate.hocon.HoconConfigurationLoader;
 import ninja.leaping.configurate.loader.ConfigurationLoader;
 import org.slf4j.Logger;
-import org.spongepowered.api.config.ConfigDir;
 import org.spongepowered.api.config.DefaultConfig;
 
 import java.io.IOException;
@@ -17,19 +16,14 @@ public class Config {
     @DefaultConfig(sharedRoot = false)
     private Path defaultConfig;
 
-    @Inject
-    @DefaultConfig(sharedRoot = false)
     private ConfigurationLoader<CommentedConfigurationNode> configManager;
-
-    @Inject
-    @ConfigDir(sharedRoot = false)
-    private Path privateConfigDir;
 
     @Inject
     private Logger logger;
     private CommentedConfigurationNode rootNode;
 
     public Config() {
+        configManager = HoconConfigurationLoader.builder().setPath(defaultConfig).build();
         try {
             rootNode = configManager.load();
         } catch (IOException e) {
@@ -45,7 +39,7 @@ public class Config {
 
     }
 
-    @CfgVaule
+    // @CfgVaule
     String pwd_regex;
 
     private void loadVaules() {

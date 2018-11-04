@@ -22,20 +22,22 @@ public class SecureLogin {
     @Inject
     private Logger logger;
 
-    private API api;
-    @Inject
+    public API api;
     Injector injector;
+    @Inject
+    Injector super_injector;
+    @Inject
     Config cfg;
     @Listener
     public void onPreInit(GamePreInitializationEvent event) {
         logger.info("Loading configurations");
-        api = injector.createChildInjector(new Module() {
+        injector = super_injector.createChildInjector(new Module() {
             @Override
             public void configure(Binder binder) {
                 binder.bind(StorageHandler.class).to(FileStorage.class);
             }
-        }).getInstance(API.class);
-        cfg = injector.getInstance(Config.class);
+        });
+        logger.info("Loading fields for configuration");
         ConfigFactory.loadFields(cfg);
 
     }
@@ -50,6 +52,7 @@ public class SecureLogin {
     public void onPostInit(GamePostInitializationEvent event) {
 
         logger.info("Interacting with other plugin");
+        api = injector.getInstance(API.class);
     }
 
     @Listener
