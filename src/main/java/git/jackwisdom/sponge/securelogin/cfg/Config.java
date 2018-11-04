@@ -48,7 +48,7 @@ public class Config {
         rootNode = configManager.createEmptyNode();
         rootNode.getNode("nondefault").setValue(false).setComment("If this is false the whole file " +
                 "will be set to default");
-        rootNode.getNode("pwd").getNode("regex").setValue("").setComment("the regex of the password");
+        rootNode.getNode("pwd").getNode("regex").setValue("[a-zA-Z0-9]{6,10}").setComment("the regex of the password");
         rootNode.getNode("reg").getNode("force").setValue(true).setComment("Force Player to register or not");
         rootNode.getNode("reg", "ip").setValue(3).setComment("max reg per ip");
         rootNode.getNode("login", "maxTries").setValue(3).setComment("max tries");
@@ -58,6 +58,14 @@ public class Config {
         login.getNode("banHour").setValue(1).setComment("ban ip for hours");
         login.getNode("commandWhitelist").setValue(new String[]{"login", "register"}).setComment("cmd while list /n DO NOT " +
                 "FORGET TO ADD LOGIN AND RGISTER IN IT");
+        CommentedConfigurationNode msg = rootNode.getNode("msg");
+        msg.getNode("reg", "bad_pwd").setValue("少年 你的指令需要在6到10个字母或者数字");
+        msg.getNode("reg", "not_reg_yet").setValue("少年呀 你还没注册呢 输入/register 来注册");
+        msg.getNode("login", "not_login").setValue("少年 你需要使用/login 来登录");
+        msg.getNode("login", "fail").setValue("密码错误或者无效");
+        msg.getNode("login", "succes").setValue("成功登录");
+        msg.getNode("login", "bot_kick").setValue("密码错太多了 小心被封");
+        msg.getNode("login", "bot_ban").setValue("恭喜您被封IP了 是不是想盗号？");
         try {
             configManager.save(rootNode);
         } catch (IOException e) {
