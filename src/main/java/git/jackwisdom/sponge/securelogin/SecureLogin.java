@@ -46,4 +46,8 @@ public class SecureLogin {
     private void buildCmds() {
         CommandSpec cmd = CommandSpec.builder().build();
     }
+
+    private void regListeners() {
+        //Sponge.getEventManager().registerListeners(this, new ExampleListener());
+    }
 }
