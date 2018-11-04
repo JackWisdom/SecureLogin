@@ -1,6 +1,7 @@
 package git.jackwisdom.sponge.securelogin.cfg;
 
 import com.google.inject.Inject;
+import git.jackwisdom.sponge.securelogin.annotation.CfgVaule;
 import ninja.leaping.configurate.commented.CommentedConfigurationNode;
 import ninja.leaping.configurate.loader.ConfigurationLoader;
 import org.slf4j.Logger;
@@ -44,10 +45,17 @@ public class Config {
 
     }
 
+    @CfgVaule
+    String pwd_regex;
+
+    private void loadVaules() {
+
+    }
     private void setDefault(CommentedConfigurationNode rootNode) {
         rootNode = configManager.createEmptyNode();
         rootNode.getNode("nondefault").setValue(false).setComment("If this is false the whole file " +
                 "will be set to default");
+        rootNode.getNode("storage", "file").setValue("pwd.conf");
         rootNode.getNode("pwd").getNode("regex").setValue("[a-zA-Z0-9]{6,10}").setComment("the regex of the password");
         rootNode.getNode("reg").getNode("force").setValue(true).setComment("Force Player to register or not");
         rootNode.getNode("reg", "ip").setValue(3).setComment("max reg per ip");
@@ -80,5 +88,9 @@ public class Config {
 
     public void save() throws IOException {
         configManager.save(rootNode);
+    }
+
+    public CommentedConfigurationNode getRootNode() {
+        return rootNode;
     }
 }

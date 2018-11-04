@@ -1,7 +1,13 @@
 package git.jackwisdom.sponge.securelogin;
 
+import com.google.inject.Binder;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
+import com.google.inject.Module;
+import git.jackwisdom.sponge.securelogin.cfg.Config;
+import git.jackwisdom.sponge.securelogin.cfg.ConfigFactory;
+import git.jackwisdom.sponge.securelogin.data.FileStorage;
+import git.jackwisdom.sponge.securelogin.data.StorageHandler;
 import git.jackwisdom.sponge.securelogin.listener.AntiGriefListener;
 import git.jackwisdom.sponge.securelogin.listener.IListener;
 import org.slf4j.Logger;
@@ -15,13 +21,22 @@ import org.spongepowered.api.plugin.Plugin;
 public class SecureLogin {
     @Inject
     private Logger logger;
-    @Inject
+
     private API api;
     @Inject
     Injector injector;
+    Config cfg;
     @Listener
     public void onPreInit(GamePreInitializationEvent event) {
         logger.info("Loading configurations");
+        api = injector.createChildInjector(new Module() {
+            @Override
+            public void configure(Binder binder) {
+                binder.bind(StorageHandler.class).to(FileStorage.class);
+            }
+        }).getInstance(API.class);
+        cfg = injector.getInstance(Config.class);
+        ConfigFactory.loadFields(cfg);
 
     }
 
