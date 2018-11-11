@@ -45,37 +45,37 @@ public class Config {
 
 
     @CfgVaule
-    public static String storage_file;
+    public String storage_file;
     @CfgVaule
-    public static String pwd_regex;
+    public String pwd_regex;
     @CfgVaule
-    public static boolean reg_force;
+    public boolean reg_force;
     @CfgVaule
-    public static int reg_ip;
+    public int reg_ip;
     @CfgVaule
-    public static int login_maxTries;
+    public int login_maxTries;
     @CfgVaule
-    public static boolean login_kick;
+    public boolean login_kick;
     @CfgVaule
-    public static boolean login_ban;
+    public boolean login_ban;
     @CfgVaule
-    public static int login_banHour;
+    public int login_banHour;
     @CfgVaule
-    public static ArrayList<String> commandWhitelist;
+    public ArrayList<String> commandWhitelist;
     @CfgVaule
-    public static String msg_bad__pwd;
+    public String msg_bad__pwd;
     @CfgVaule
-    public static String msg_reg_not__reg__yet;
+    public String msg_reg_not__reg__yet;
     @CfgVaule
-    public static String msg_login_not__login;
+    public String msg_login_not__login;
     @CfgVaule
-    public static String msg_login_fail;
+    public String msg_login_fail;
     @CfgVaule
-    public static String msg_login_success;
+    public String msg_login_success;
     @CfgVaule
-    public static String msg_login_bot__kick;
+    public String msg_login_bot__kick;
     @CfgVaule
-    public static String msg_login_bot__ban;
+    public String msg_login_bot__ban;
 
     private void setDefault(CommentedConfigurationNode rootNode) {
         rootNode = configManager.createEmptyNode();
