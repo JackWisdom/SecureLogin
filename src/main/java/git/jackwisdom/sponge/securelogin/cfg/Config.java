@@ -45,41 +45,41 @@ public class Config {
 
 
     @CfgVaule
-    static String storage_file;
+    public static String storage_file;
     @CfgVaule
-    static String pwd_regex;
+    public static String pwd_regex;
     @CfgVaule
-    static boolean reg_force;
+    public static boolean reg_force;
     @CfgVaule
-    static int reg_ip;
+    public static int reg_ip;
     @CfgVaule
-    static int login_maxTries;
+    public static int login_maxTries;
     @CfgVaule
-    static boolean login_kick;
+    public static boolean login_kick;
     @CfgVaule
-    static boolean login_ban;
+    public static boolean login_ban;
     @CfgVaule
-    static int login_banHour;
+    public static int login_banHour;
     @CfgVaule
-    static ArrayList<String> commandWhitelist;
+    public static ArrayList<String> commandWhitelist;
     @CfgVaule
-    static String msg_bad__pwd;
+    public static String msg_bad__pwd;
     @CfgVaule
-    static String msg_reg_not__reg__yet;
+    public static String msg_reg_not__reg__yet;
     @CfgVaule
-    static String msg_login_not__login;
+    public static String msg_login_not__login;
     @CfgVaule
-    static String msg_login_fail;
+    public static String msg_login_fail;
     @CfgVaule
-    static String msg_login_success;
+    public static String msg_login_success;
     @CfgVaule
-    static String msg_login_bot__kick;
+    public static String msg_login_bot__kick;
     @CfgVaule
-    static String msg_login_bot__ban;
+    public static String msg_login_bot__ban;
 
     private void setDefault(CommentedConfigurationNode rootNode) {
         rootNode = configManager.createEmptyNode();
-        rootNode.getNode("nondefault").setValue(false).setComment("If this is false the whole file " +
+        rootNode.getNode("nondefault").setValue(true).setComment("If this is false the whole file " +
                 "will be set to default");
         rootNode.getNode("storage", "file").setValue("pwd.conf");
         rootNode.getNode("pwd").getNode("regex").setValue("[a-zA-Z0-9]{6,10}").setComment("the regex of the password");
