@@ -1,13 +1,9 @@
 package git.jackwisdom.sponge.securelogin;
 
-import com.google.inject.Binder;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
-import com.google.inject.Module;
 import git.jackwisdom.sponge.securelogin.cfg.Config;
 import git.jackwisdom.sponge.securelogin.cfg.ConfigFactory;
-import git.jackwisdom.sponge.securelogin.data.FileStorage;
-import git.jackwisdom.sponge.securelogin.data.StorageHandler;
 import git.jackwisdom.sponge.securelogin.listener.AntiGriefListener;
 import git.jackwisdom.sponge.securelogin.listener.IListener;
 import org.slf4j.Logger;
@@ -19,26 +15,25 @@ import org.spongepowered.api.plugin.Plugin;
 
 @Plugin(id = "securelogin", name = "Secure Login", version = "0.01", description = "A auth plugin for offlne servers")
 public class SecureLogin {
-    @Inject
-    private Logger logger;
 
-    public API api;
-    Injector injector;
+    private API api;
+    private Config config;
+
+
+    private Logger logger;
+    private Injector injector;
     @Inject
-    Injector super_injector;
-    @Inject
-    Config cfg;
+    public SecureLogin(Logger logger, Injector injector, API api, Config config) {
+        this.logger = logger;
+        this.injector = injector;
+        this.api = api;
+        this.config = config;
+
+    }
     @Listener
     public void onPreInit(GamePreInitializationEvent event) {
         logger.info("Loading configurations");
-        injector = super_injector.createChildInjector(new Module() {
-            @Override
-            public void configure(Binder binder) {
-                binder.bind(StorageHandler.class).to(FileStorage.class);
-            }
-        });
-        logger.info("Loading fields for configuration");
-        ConfigFactory.loadFields(cfg);
+        ConfigFactory.loadFields(config);
 
     }
 
@@ -52,7 +47,6 @@ public class SecureLogin {
     public void onPostInit(GamePostInitializationEvent event) {
 
         logger.info("Interacting with other plugin");
-        api = injector.getInstance(API.class);
     }
 
     @Listener
@@ -70,10 +64,6 @@ public class SecureLogin {
         logger.info("Welcome to use SecureLogin");
     }
 
-    //getters
-    public API getApi() {
-        return api;
-    }
 
     //cmd&listener
     private void buildCmds() {

@@ -18,12 +18,12 @@ public class ConfigFactory {
             if (vaule.path() != null) {
                 node = vaule.path();
             } else {
-                node = f.getName();
+                node = f.getName().replaceAll("_", ".").replace("..", "_");
             }
             try {
                 f.set(config.getRootNode().getNode(node).getValue(), config);
             } catch (IllegalAccessException e) {
-                //  logger.info("AN ERROR HAPPENED WHILE SETTING VALUE FOR \n"+node);
+                System.err.println("AN ERROR HAPPENED WHILE SETTING VALUE FOR \n" + node);
                 e.printStackTrace();
             }
 

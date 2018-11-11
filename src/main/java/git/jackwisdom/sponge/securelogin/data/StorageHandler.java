@@ -1,25 +1,10 @@
 package git.jackwisdom.sponge.securelogin.data;
 
-import com.google.common.base.Optional;
-
-import javax.annotation.Nonnull;
-
+//@ImplementedBy(FileStorage.class)
 public interface StorageHandler {
-    void register(String name, String pwd, long time);
+    public Account loadAccount(String name);
 
-    Optional<Long> getLoginTime(String name);
+    public boolean hasRecord(String name);
 
-    @Nonnull
-    void setLoginTime(String name, long time);
-
-    Optional<String> getPassword(String name);
-
-    void delete(String name);
-
-    boolean hasRecord(String name);
-
-    //WIP
-    String getIp(String name);
-
-    int getAccounts(String ip);
+    public void save(Account account);
 }

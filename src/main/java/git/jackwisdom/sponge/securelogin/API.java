@@ -1,24 +1,25 @@
 package git.jackwisdom.sponge.securelogin;
 
-import com.google.common.base.Optional;
-import com.google.inject.Inject;
+import com.google.inject.Singleton;
+import git.jackwisdom.sponge.securelogin.data.Account;
 import git.jackwisdom.sponge.securelogin.data.StorageHandler;
-import git.jackwisdom.sponge.securelogin.exception.NullPassword;
-import org.spongepowered.api.entity.living.player.Player;
 
 import java.util.HashSet;
 
+@Singleton
 public class API {
-    private HashSet<String> loginedPlayer;
-    @Inject
+    private HashSet<Account> loginedPlayer;
     private StorageHandler storageHandler;
-
-    public API() {
-        loginedPlayer = new HashSet<>();
+    /*
+    private API(StorageHandler handler) {
+        this.loginedPlayer = new HashSet<>();
+        this.storageHandler=handler;
     }
-
+    */
+/*
     public boolean isLogin(String s) {
-        return loginedPlayer.contains(s);
+
+        return false;
     }
 
     public boolean isLogin(Player player) {
@@ -114,4 +115,6 @@ public class API {
     public boolean isRegisted(Player player) {
         return isRegisted(player.getName());
     }
+    */
+
 }

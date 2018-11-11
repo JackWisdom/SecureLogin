@@ -1,34 +1,11 @@
 package git.jackwisdom.sponge.securelogin.data;
 
-import com.google.common.base.Optional;
-
-import javax.annotation.Nonnull;
-
 public class FileStorage implements StorageHandler {
-    @Override
-    public void register(String name, String pwd, long time) {
 
-    }
 
     @Override
-    public Optional<Long> getLoginTime(String name) {
+    public Account loadAccount(String name) {
         return null;
-    }
-
-    @Nonnull
-    @Override
-    public void setLoginTime(String name, long time) {
-
-    }
-
-    @Override
-    public Optional<String> getPassword(String name) {
-        return null;
-    }
-
-    @Override
-    public void delete(String name) {
-
     }
 
     @Override
@@ -37,12 +14,9 @@ public class FileStorage implements StorageHandler {
     }
 
     @Override
-    public String getIp(String name) {
-        return null;
+    public void save(Account account) {
+
     }
 
-    @Override
-    public int getAccounts(String ip) {
-        return 0;
-    }
+
 }
