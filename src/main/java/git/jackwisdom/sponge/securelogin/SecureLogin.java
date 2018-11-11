@@ -33,7 +33,7 @@ public class SecureLogin {
     @Listener
     public void onPreInit(GamePreInitializationEvent event) {
         logger.info("Loading configurations");
-        ConfigFactory.loadFields(config);
+        ConfigFactory.loadFields(logger, config);
 
     }
 
