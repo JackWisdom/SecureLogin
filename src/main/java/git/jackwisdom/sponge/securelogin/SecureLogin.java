@@ -3,7 +3,6 @@ package git.jackwisdom.sponge.securelogin;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
 import git.jackwisdom.sponge.securelogin.cfg.Config;
-import git.jackwisdom.sponge.securelogin.cfg.ConfigFactory;
 import git.jackwisdom.sponge.securelogin.listener.AntiGriefListener;
 import git.jackwisdom.sponge.securelogin.listener.IListener;
 import org.slf4j.Logger;
@@ -33,7 +32,7 @@ public class SecureLogin {
     @Listener
     public void onPreInit(GamePreInitializationEvent event) {
         logger.info("Loading configurations");
-        ConfigFactory.loadFields(logger, config);
+        //ConfigFactory.loadFields(logger, config);
 
     }
 

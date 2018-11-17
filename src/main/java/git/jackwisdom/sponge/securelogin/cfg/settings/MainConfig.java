@@ -1,4 +1,4 @@
-package git.jackwisdom.sponge.securelogin.cfg;
+package git.jackwisdom.sponge.securelogin.cfg.settings;
 
 import ninja.leaping.configurate.objectmapping.Setting;
 import ninja.leaping.configurate.objectmapping.serialize.ConfigSerializable;
