@@ -92,6 +92,7 @@ public class Config {
         login.getNode("banHour").setValue(1).setComment("ban ip for hours");
         login.getNode("commandWhitelist").setValue(Arrays.asList(new String[]{"login", "register"})).setComment("cmd while list /n DO NOT " +
                 "FORGET TO ADD LOGIN AND RGISTER IN IT");
+        /*
         CommentedConfigurationNode msg = rootNode.getNode("msg");
         msg.getNode("reg", "bad_pwd").setValue("少年 你的指令需要在6到10个字母或者数字");
         msg.getNode("reg", "not_reg_yet").setValue("少年呀 你还没注册呢 输入/register 来注册");
@@ -100,6 +101,7 @@ public class Config {
         msg.getNode("login", "success").setValue("成功登录");
         msg.getNode("login", "bot_kick").setValue("密码错太多了 小心被封");
         msg.getNode("login", "bot_ban").setValue("恭喜您被封IP了 是不是想盗号？");
+        */
         try {
             configManager.save(rootNode);
         } catch (IOException e) {
